@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Atolla</title>
+<meta name="description" content="Privacy policy for Atolla, which licenses proprietary research data from independent scientists to the organizations that need it." />
+<meta name="theme-color" content="#0a1a2f" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://atolla.bio/privacy" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{font-family:'Barlow',system-ui,sans-serif;font-weight:400;color:#111;background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:#0e7c7b;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:820px;margin:0 auto;padding:0 40px}
+  .label-upper{font-family:'Barlow',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#0e7c7b;display:block;margin-bottom:.75rem}
+
+  /* Top bar */
+  .topbar{height:64px;display:flex;align-items:center;border-bottom:1px solid #e3e3e3;position:sticky;top:0;background:#fff;z-index:10}
+  .topbar__inner{max-width:820px;margin:0 auto;padding:0 40px;width:100%;display:flex;align-items:center;justify-content:space-between}
+  .topbar__logo{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em;color:#000}
+  .topbar__back{font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#000}
+  .topbar__back:hover{color:#0e7c7b;text-decoration:none}
+
+  /* Header */
+  .head{padding:4.5rem 0 2.5rem;border-bottom:1px solid #ececec}
+  .head h1{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.05;color:#000;margin-bottom:.6rem}
+  .head__meta{font-size:.92rem;color:#666}
+
+  /* Intro card */
+  .intro{background:#f5f5f5;border-left:3px solid #0e7c7b;padding:1.6rem 1.8rem;margin:2.5rem 0;font-size:1rem}
+  .intro p{margin-bottom:.9rem}
+  .intro p:last-child{margin-bottom:0}
+
+  /* TOC */
+  .toc{margin:2.5rem 0;padding:1.4rem 1.6rem;border:1px solid #e3e3e3}
+  .toc__title{font-family:'Barlow',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#888;margin-bottom:1rem}
+  .toc ol{list-style:none;counter-reset:toc;columns:2;column-gap:2.5rem}
+  .toc li{counter-increment:toc;margin-bottom:.55rem;font-size:.92rem;break-inside:avoid}
+  .toc li::before{content:counter(toc,decimal-leading-zero);color:#0e7c7b;font-family:'Archivo Narrow',sans-serif;font-weight:700;margin-right:.6rem}
+  .toc a{color:#222}
+  .toc a:hover{color:#0e7c7b}
+
+  /* Sections */
+  section.legal{padding:2.6rem 0;border-bottom:1px solid #ececec}
+  section.legal:last-of-type{border-bottom:none}
+  .legal__num{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:.9rem;color:#0e7c7b;letter-spacing:.05em;display:block;margin-bottom:.4rem}
+  .legal h2{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2rem);line-height:1.15;color:#000;margin-bottom:1.1rem;scroll-margin-top:80px}
+  .legal h3{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:1.15rem;color:#000;margin:1.6rem 0 .7rem}
+  .legal p{margin-bottom:1rem;color:#222}
+  .legal ul{list-style:none;margin:0 0 1.1rem}
+  .legal ul li{position:relative;padding-left:1.4rem;margin-bottom:.55rem;color:#222}
+  .legal ul li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:#0e7c7b;border-radius:50%}
+  .legal strong{color:#000}
+
+  /* Table */
+  .tablewrap{overflow-x:auto;margin:1.2rem 0 1.4rem}
+  table{border-collapse:collapse;width:100%;font-size:.9rem}
+  th,td{text-align:left;padding:.7rem .9rem;border:1px solid #e3e3e3;vertical-align:top}
+  th{background:#0a1a2f;color:#fff;font-family:'Barlow',sans-serif;font-weight:500;letter-spacing:.03em}
+  tbody tr:nth-child(even){background:#fafafa}
+
+  /* Rights grid */
+  .rights{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.2rem 0 1.4rem}
+  .right{border:1px solid #e3e3e3;padding:1.1rem 1.2rem}
+  .right strong{display:block;font-family:'Archivo Narrow',sans-serif;font-size:1.05rem;margin-bottom:.3rem}
+  .right span{font-size:.9rem;color:#555}
+
+  /* Footer */
+  footer{background:#0a1a2f;color:rgba(255,255,255,.7);padding:3rem 0;margin-top:3rem}
+  .footer__inner{max-width:820px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem}
+  .footer__logo{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;margin-bottom:.5rem}
+  .footer__links{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:.8rem}
+  .footer__links a{color:rgba(255,255,255,.75);font-size:.85rem;letter-spacing:.04em}
+  .footer__links a:hover{color:#fff;text-decoration:none}
+  .footer__disc{font-size:.8rem;color:rgba(255,255,255,.5)}
+
+  @media (max-width:640px){
+    .container,.topbar__inner,.footer__inner{padding-left:24px;padding-right:24px}
+    .toc ol{columns:1}
+    .footer__inner{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <a href="/" class="topbar__logo">Atolla</a>
+    <a href="/" class="topbar__back">← Back to site</a>
+  </div>
+</div>
+
+<main class="container">
+
+  <div class="head">
+    <span class="label-upper">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="head__meta">Atolla · Last updated: June 2026</p>
+  </div>
+
+  <div class="intro">
+    <p>This Privacy Policy explains how <strong>Atolla</strong>, operated by SJR LLC ("Atolla", "we", "us", or "our"), collects, uses, and protects information when you visit <strong>atolla.bio</strong> or get in touch with us.</p>
+    <p>We collect the minimum data necessary to operate this site and respond to you. We do not sell your data and we do not share it with advertisers. This policy is written in plain English — if anything is unclear, <a href="#contact">contact us</a>.</p>
+    <p><strong>Our baseline:</strong> if you only browse this website and do not submit a form, we do not collect any personally identifiable information about you.</p>
+  </div>
+
+  <nav class="toc">
+    <div class="toc__title">On this page</div>
+    <ol>
+      <li><a href="#who-we-are">Who we are</a></li>
+      <li><a href="#what-we-collect">What we collect</a></li>
+      <li><a href="#how-we-use">How we use it</a></li>
+      <li><a href="#storage">Storage &amp; security</a></li>
+      <li><a href="#sharing">Sharing</a></li>
+      <li><a href="#retention">Retention</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#your-rights">Your rights</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <section class="legal">
+    <span class="legal__num">01</span>
+    <h2 id="who-we-are">Who We Are</h2>
+    <p><strong>Atolla</strong> is an early-stage company that licenses proprietary research data from independent scientists to the organizations that need it — and pays the scientists who created it. Atolla is operated by SJR LLC.</p>
+    <p>For the purposes of data protection law, the data controller is:</p>
+    <p><strong>SJR LLC / Atolla</strong><br>
+    Email: <a href="mailto:privacy@atolla.bio">privacy@atolla.bio</a><br>
+    Website: <a href="https://atolla.bio">atolla.bio</a></p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">02</span>
+    <h2 id="what-we-collect">What We Collect</h2>
+    <p>We collect personal data only when you choose to contact us through one of the forms on this site or by email.</p>
+
+    <h3>"I have data" form (for scientists)</h3>
+    <p>When you tell us about research data you hold, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>The description of your data that you provide (field, region, how it was funded, and anything else you choose to include)</li>
+    </ul>
+
+    <h3>"I need data" form (for buyers)</h3>
+    <p>When you request early access to datasets, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your work email address</li>
+      <li>Your organization</li>
+    </ul>
+
+    <h3>Email contact</h3>
+    <p>If you email us directly (for example at <a href="mailto:hello@atolla.bio">hello@atolla.bio</a>), we receive your email address, your name if provided, and the contents of your message.</p>
+
+    <h3>Technical data (automatic)</h3>
+    <p>Like most websites, our hosting infrastructure may automatically log basic technical data when you visit, including your approximate IP address, browser type, and the pages you view. This data is used solely for server security and uptime monitoring. It is not linked to any personal profile.</p>
+
+    <p><strong>Coming soon:</strong> we plan to add website analytics to understand how visitors use the site, and may introduce functional cookies. When we do, this policy will be updated and you will be given the opportunity to consent. Until then, we do not use analytics or tracking cookies.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Data type</th><th>When collected</th><th>Required?</th></tr></thead>
+        <tbody>
+          <tr><td>Name, email, data description</td><td>"I have data" form</td><td>Yes (to respond to you)</td></tr>
+          <tr><td>Name, work email, organization</td><td>"I need data" form</td><td>Yes (to respond to you)</td></tr>
+          <tr><td>Name, email, message</td><td>Direct email to us</td><td>You choose what to send</td></tr>
+          <tr><td>IP address, browser type</td><td>Automatically on each visit</td><td>Automatic (server logs)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">03</span>
+    <h2 id="how-we-use">How We Use Your Information</h2>
+    <p>We use your information only for the purpose for which you provided it:</p>
+    <ul>
+      <li><strong>Scientist enquiries:</strong> to evaluate the data you describe, follow up personally, and discuss whether and how it could be licensed.</li>
+      <li><strong>Buyer enquiries:</strong> to understand what you need and show you what datasets may be available.</li>
+      <li><strong>Direct email:</strong> to respond to your message.</li>
+      <li><strong>Server logs:</strong> to maintain site security and diagnose technical issues — never for profiling or marketing.</li>
+    </ul>
+    <p>We will never use your data to send unsolicited commercial messages, share it with advertisers, or build profiles for targeting purposes. Submitting a form does not place you on any mailing list.</p>
+
+    <h3>Legal basis (GDPR)</h3>
+    <p>If you are located in the European Economic Area or United Kingdom, our legal basis for processing your data is:</p>
+    <ul>
+      <li><strong>Legitimate interests</strong> — responding to business enquiries you initiate and keeping our site secure.</li>
+      <li><strong>Consent</strong> — where you have given it for a specific purpose. You can withdraw consent at any time.</li>
+    </ul>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">04</span>
+    <h2 id="storage">Storage &amp; Security</h2>
+    <p>Your data is stored on secure servers. We take reasonable technical and organisational measures to protect it against unauthorised access, loss, or disclosure.</p>
+    <p>Form submissions are processed by our form provider and delivered to our operational email inbox, where they are stored. We do not share this data with third parties beyond what is described in Section 5 below.</p>
+    <p>No method of transmission over the internet is 100% secure. While we do our best to protect your data, we cannot guarantee absolute security.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">05</span>
+    <h2 id="sharing">Sharing Your Data</h2>
+    <p>We do not sell, rent, or trade your personal data. We share it only in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Service providers:</strong> we use third-party tools to operate the site and process form submissions (for example, our website host and our form-handling provider). These providers are contractually restricted from using your data for any purpose other than providing their service to us.</li>
+      <li><strong>Legal requirements:</strong> we may disclose your data if required to do so by law, court order, or to protect the rights and safety of Atolla, its team, or the public.</li>
+      <li><strong>Business transfer:</strong> if Atolla or SJR LLC is transferred or restructured, your data may be transferred as part of that transaction. You will be notified in advance if this occurs.</li>
+    </ul>
+    <p>In all other cases, we ask for your explicit consent before sharing.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">06</span>
+    <h2 id="retention">How Long We Keep Your Data</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Data type</th><th>Retention period</th></tr></thead>
+        <tbody>
+          <tr><td>Form submissions (scientist &amp; buyer enquiries)</td><td>Up to 2 years, then deleted unless an ongoing relationship requires otherwise</td></tr>
+          <tr><td>Direct email correspondence</td><td>Up to 2 years, then deleted unless ongoing correspondence requires otherwise</td></tr>
+          <tr><td>Server access logs</td><td>Up to 90 days, then automatically deleted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>You can request earlier deletion at any time — see Section 8 (Your Rights).</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">07</span>
+    <h2 id="cookies">Cookies</h2>
+    <p>A cookie is a small text file stored on your device when you visit a website.</p>
+    <h3>What we currently use</h3>
+    <p>At present, atolla.bio uses only the basic session cookies necessary for the site to function. These cookies do not track you across other sites. We do not currently use analytics cookies, advertising cookies, or any third-party tracking cookies.</p>
+    <p><strong>Planned update:</strong> we intend to add website analytics in the near future. When we do, we will implement a cookie consent banner and update this section to describe exactly what is being set and why. You will always be able to opt out.</p>
+    <h3>How to control cookies</h3>
+    <p>You can set your browser to refuse all or some cookies, or to alert you when websites set or access cookies. If you disable certain cookies, some parts of this site may not function properly. For more information, visit <a href="https://www.allaboutcookies.org" rel="noopener" target="_blank">allaboutcookies.org</a>.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">08</span>
+    <h2 id="your-rights">Your Rights</h2>
+    <p>Depending on where you are located, you have certain rights over your personal data. We honour all of the following:</p>
+    <div class="rights">
+      <div class="right"><strong>Access</strong><span>Request a copy of the personal data we hold about you.</span></div>
+      <div class="right"><strong>Correction</strong><span>Ask us to correct inaccurate or incomplete data.</span></div>
+      <div class="right"><strong>Deletion</strong><span>Ask us to delete your data ("right to be forgotten").</span></div>
+      <div class="right"><strong>Objection</strong><span>Object to us processing your data for a specific purpose.</span></div>
+      <div class="right"><strong>Portability</strong><span>Receive your data in a structured, machine-readable format.</span></div>
+      <div class="right"><strong>Withdraw consent</strong><span>Revoke consent at any time, no questions asked.</span></div>
+    </div>
+    <p>To exercise any of these rights, email us at <a href="mailto:privacy@atolla.bio">privacy@atolla.bio</a>. We will respond within 30 days and will never charge a fee for a legitimate request.</p>
+    <p>If you are in the EEA or UK and believe we have not handled your data lawfully, you have the right to lodge a complaint with your local data protection authority.</p>
+    <h3>California residents (CCPA)</h3>
+    <p>If you are a California resident, you have the right to know what personal information we collect, request deletion of your personal information, and opt out of any sale of personal information. We do not sell personal information. To exercise your California rights, contact us at <a href="mailto:privacy@atolla.bio">privacy@atolla.bio</a>.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">09</span>
+    <h2 id="children">Children's Privacy</h2>
+    <p>This website is not directed at children under the age of 13. We do not knowingly collect personal data from children. If you believe a child has provided us with their information, please contact us and we will delete it promptly.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">10</span>
+    <h2 id="changes">Changes to This Policy</h2>
+    <p>We will update this policy when our data practices change — in particular when we add analytics or cookie tracking. When we make material changes, we will update the "Last updated" date at the top of this page.</p>
+  </section>
+
+  <section class="legal">
+    <span class="legal__num">11</span>
+    <h2 id="contact">Contact Us</h2>
+    <p>For any privacy-related question, request, or complaint, please reach out:</p>
+    <p><strong>Atolla / SJR LLC</strong><br>
+    Email: <a href="mailto:privacy@atolla.bio">privacy@atolla.bio</a><br>
+    Website: <a href="https://atolla.bio">atolla.bio</a></p>
+    <p>We aim to respond to all privacy requests within 5 business days, and within 30 days at the latest.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer__inner">
+    <div>
+      <div class="footer__logo">Atolla</div>
+      <p class="footer__disc">Atolla is an early-stage company. This site is informational and is not an offer of securities or a binding agreement.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="footer__links">
+        <a href="/">Home</a>
+        <a href="/#how">How it works</a>
+        <a href="/#scientists">For scientists</a>
+        <a href="/#buyers">For buyers</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+      <p class="footer__disc"><a href="mailto:hello@atolla.bio" style="color:rgba(255,255,255,.6)">hello@atolla.bio</a> &nbsp;·&nbsp; © 2026 Atolla</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
