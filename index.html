@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atolla — Proprietary research data, licensed early</title>
+<meta name="description" content="Atolla licenses proprietary research data from independent scientists to the organizations that need it now — and pays the scientists who created it." />
+<meta name="theme-color" content="#0a1a2f" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{font-family:'Barlow',system-ui,sans-serif;font-weight:400;color:#000;background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  .label-upper{font-family:'Barlow',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#000;display:block;margin-bottom:.75rem}
+  .label-upper--white{color:rgba(255,255,255,.7)}
+  .section-heading{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:#000}
+  .section-heading--white{color:#fff}
+  .section-heading--sm{font-size:clamp(1.6rem,3vw,2.4rem)}
+  hr.divider{border:none;border-top:1px solid #000;margin:0}
+  .container{max-width:1100px;margin:0 auto;padding:0 40px}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background .25s,border-color .25s}
+  .nav.scrolled{background:#fff;border-bottom-color:#000}
+  .nav__inner{max-width:1100px;margin:0 auto;padding:0 40px;width:100%;display:flex;align-items:center;justify-content:space-between}
+  .nav__logo{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em;color:#fff;transition:color .25s}
+  .nav.scrolled .nav__logo{color:#000}
+  .nav__links{display:flex;align-items:center;gap:2rem}
+  .nav__links a{font-family:'Barlow',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color .2s}
+  .nav__links a:hover{color:#fff}
+  .nav.scrolled .nav__links a{color:#000}
+  .nav.scrolled .nav__links a:hover{color:#0e7c7b}
+  .nav__links a.btn-nav{background:#0e7c7b;color:#fff!important;padding:.45rem 1.1rem;font-size:.8rem}
+  .nav__links a.btn-nav:hover{background:#0a5e5d}
+  .nav__hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+  .nav__hamburger span{display:block;width:24px;height:1.5px;background:#fff;transition:background .25s,transform .25s,opacity .25s}
+  .nav.scrolled .nav__hamburger span{background:#000}
+  .nav__hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav__hamburger.open span:nth-child(2){opacity:0}
+  .nav__hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .nav__mobile{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #000;z-index:999;padding:1.5rem 40px 2rem}
+  .nav__mobile.open{display:flex;flex-direction:column;gap:1rem}
+  .nav__mobile a{font-family:'Barlow',sans-serif;font-size:1rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#000;border-bottom:1px solid #e0e0e0;padding-bottom:.75rem}
+  .nav__mobile a:last-child{border-bottom:none}
+  .hero{min-height:100vh;background:linear-gradient(rgba(10,26,47,.55),rgba(0,0,0,.84)),#08131f;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding-bottom:9vh}
+  .hero__content{max-width:1100px;margin:0 auto;padding:0 40px;width:100%;display:flex;justify-content:flex-end}
+  .hero__text{width:56%}
+  .hero__label{font-family:'Barlow',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);display:block;margin-bottom:1.1rem}
+  .hero__h1{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:clamp(2.8rem,6vw,5rem);line-height:1;color:#fff;margin-bottom:1.2rem}
+  .hero__subline{font-family:'Barlow',sans-serif;font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.82);letter-spacing:.01em;margin-bottom:2.2rem;max-width:520px}
+  .hero__btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.9rem;display:inline-block;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+  .btn--teal{background:#0e7c7b;color:#fff;border:1px solid #0e7c7b}
+  .btn--teal:hover{background:#0a5e5d;border-color:#0a5e5d}
+  .btn--outline-white{background:transparent;color:#fff;border:1px solid #fff}
+  .btn--outline-white:hover{background:rgba(255,255,255,.12)}
+  .section{padding:7rem 0}
+  .section--dark{background:#000;color:#fff}
+  .section--grey{background:#f5f5f5}
+  .section-header{margin-bottom:3.5rem}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid #000}
+  .cols3--white{border-top-color:rgba(255,255,255,.25)}
+  .col{padding:2.5rem 2rem 2.5rem 0;border-right:1px solid #000}
+  .cols3--white .col{border-right-color:rgba(255,255,255,.25)}
+  .col:last-child{border-right:none;padding-right:0}
+  .col:not(:first-child){padding-left:2rem}
+  .col__num{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:2.2rem;line-height:1;color:#0e7c7b;display:block;margin-bottom:1rem}
+  .col__heading{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #000}
+  .cols3--white .col__heading{border-bottom-color:rgba(255,255,255,.25);color:#fff}
+  .col__text{font-family:'Barlow',sans-serif;font-size:.95rem;color:#222;line-height:1.7}
+  .cols3--white .col__text{color:rgba(255,255,255,.72)}
+  .about__grid{display:grid;grid-template-columns:45fr 55fr;gap:5rem;align-items:start}
+  .about__bio{font-family:'Barlow',sans-serif;font-size:1.05rem;color:#222;line-height:1.7;margin-top:1.5rem;margin-bottom:2rem}
+  .about__awards{display:flex;flex-direction:column;gap:.75rem}
+  .about__award{border:1px solid #000;padding:.9rem 1.1rem;font-family:'Barlow',sans-serif;font-size:.88rem;font-weight:500;color:#000;line-height:1.4}
+  .about__stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #000;margin-top:2.5rem}
+  .about-stat{padding:1.4rem 1.4rem;border-right:1px solid #000}
+  .about-stat:last-child{border-right:none}
+  .about-stat__number{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.7rem;line-height:1;display:block;margin-bottom:.3rem}
+  .about-stat__label{font-family:'Barlow',sans-serif;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#555}
+  .creds{padding-top:3.5rem}
+  .creds li{display:flex;align-items:center;gap:.9rem;padding:1rem 0;border-bottom:1px solid #e0e0e0;font-family:'Barlow',sans-serif;font-size:.95rem;color:#111}
+  .creds li:first-child{border-top:1px solid #e0e0e0}
+  .dot{width:10px;height:10px;border-radius:50%;background:#0e7c7b;flex-shrink:0}
+  .trust{max-width:720px}
+  .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #000}
+  .split__pane{padding:4.5rem 4rem}
+  .split__pane--light{padding-left:40px}
+  .split__pane--dark{background:linear-gradient(rgba(8,19,31,.86),rgba(0,0,0,.9)),#0e3a3a;color:#fff;border-left:1px solid #000}
+  .pane__heading{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:clamp(1.5rem,2.5vw,2rem);line-height:1.1;margin:.5rem 0 .6rem}
+  .pane__sub{font-family:'Barlow',sans-serif;font-size:.92rem;font-weight:300;line-height:1.65;margin-bottom:1.8rem;max-width:360px}
+  .pane__sub--light{color:#555}
+  .pane__sub--white{color:rgba(255,255,255,.65)}
+  form.lead{display:flex;flex-direction:column;gap:0}
+  .lead input,.lead textarea{font-family:'Barlow',sans-serif;font-size:.9rem;color:#000;background:#fff;border:1px solid #000;padding:.8rem 1rem;outline:none;width:100%;margin-bottom:.7rem}
+  .lead textarea{resize:vertical;min-height:80px}
+  .lead input::placeholder,.lead textarea::placeholder{color:#aaa;font-weight:300}
+  .lead .submit{font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:#000;color:#fff;border:1px solid #000;padding:.85rem 1.4rem;cursor:pointer;transition:background .2s,border-color .2s;margin-top:.3rem}
+  .lead .submit:hover{background:#0e7c7b;border-color:#0e7c7b}
+  .split__pane--dark .lead input,.split__pane--dark .lead textarea{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+  .split__pane--dark .lead input::placeholder,.split__pane--dark .lead textarea::placeholder{color:rgba(255,255,255,.55)}
+  .split__pane--dark .lead .submit{background:#0e7c7b;border-color:#0e7c7b}
+  .split__pane--dark .lead .submit:hover{background:#fff;color:#000;border-color:#fff}
+  .fineprint{font-family:'Barlow',sans-serif;font-size:.72rem;margin-top:.9rem}
+  .fineprint--light{color:#888}
+  .fineprint--white{color:rgba(255,255,255,.45)}
+  footer{background:#000;color:#fff;padding:3rem 0;border-top:1px solid #000}
+  .footer__inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .footer__logo{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:1.1rem;color:#fff}
+  .footer__disc{font-family:'Barlow',sans-serif;font-size:.72rem;color:rgba(255,255,255,.4);max-width:520px;margin-top:.6rem;line-height:1.5}
+  .footer__links{display:flex;gap:2rem;flex-wrap:wrap;justify-content:flex-end}
+  .footer__links a{font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
+  .footer__links a:hover{color:#fff}
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:3000;background:#0e7c7b;color:#fff;padding:10px 16px;font-family:'Barlow',sans-serif;font-size:.85rem;font-weight:500}
+  .skip-link:focus{left:0}
+  :focus-visible{outline:2px solid #0e7c7b;outline-offset:2px}
+  @media(max-width:900px){
+    .container{padding:0 24px}.nav__inner{padding:0 24px}.nav__links{display:none}.nav__hamburger{display:flex}.nav__mobile{padding:1.5rem 24px 2rem}
+    .hero__text{width:78%}
+    .cols3{grid-template-columns:1fr;border-top:none}.col{border-right:none;border-top:1px solid #000;padding:2rem 0}.cols3--white .col{border-top-color:rgba(255,255,255,.25)}.col:not(:first-child){padding-left:0}
+    .about__grid{grid-template-columns:1fr;gap:3rem}.creds{padding-top:0}
+    .about__stats{grid-template-columns:repeat(2,1fr)}.about-stat:nth-child(2){border-right:none}.about-stat:nth-child(3){border-top:1px solid #000}.about-stat:nth-child(4){border-right:none;border-top:1px solid #000}
+    .split{grid-template-columns:1fr}.split__pane{padding:3.5rem 24px}.split__pane--light{padding-left:24px}.split__pane--dark{border-left:none;border-top:1px solid #333}
+    .footer__inner{padding:0 24px}.footer__links{justify-content:flex-start}
+  }
+  @media(max-width:480px){.container{padding:0 20px}.section{padding:4.5rem 0}.hero__text{width:100%}.about__stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#home">Atolla</a>
+    <div class="nav__links">
+      <a href="#how">How it works</a>
+      <a href="#dataset">Our first dataset</a>
+      <a href="#scientists">For scientists</a>
+      <a href="#buyers" class="btn-nav">Request early access</a>
+    </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<span id="main" tabindex="-1"></span>
+<div class="nav__mobile" id="mobileMenu">
+  <a href="#how">How it works</a>
+  <a href="#dataset">Our first dataset</a>
+  <a href="#scientists">For scientists</a>
+  <a href="#buyers">Request early access</a>
+</div>
+<section class="hero" id="home">
+  <div class="hero__content">
+    <div class="hero__text">
+      <span class="hero__label">A marketplace for research data</span>
+      <h1 class="hero__h1">Unpublished<br>science,<br>licensed first.</h1>
+      <p class="hero__subline">Atolla brings proprietary research data to the organizations that need it now — and pays the scientists who created it.</p>
+      <div class="hero__btns">
+        <a href="#buyers" class="btn btn--teal">I need data</a>
+        <a href="#scientists" class="btn btn--outline-white">I have data</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--grey" id="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="label-upper">The problem</span>
+      <h2 class="section-heading">Locked up for years —<br>and the makers aren't paid</h2>
+    </div>
+    <div class="cols3">
+      <div class="col"><div class="col__heading">Locked away</div><p class="col__text">Valuable research sits in labs and field stations for years before anyone outside can use it.</p></div>
+      <div class="col"><div class="col__heading">Out of date</div><p class="col__text">Organizations make major decisions on science that's already years behind the latest fieldwork.</p></div>
+      <div class="col"><div class="col__heading">Unrewarded</div><p class="col__text">The scientists who spent years collecting the data capture almost none of its value.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section section--dark" id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="label-upper label-upper--white">How it works</span>
+      <h2 class="section-heading section-heading--white">Three steps,<br>one marketplace</h2>
+    </div>
+    <div class="cols3 cols3--white">
+      <div class="col"><span class="col__num">01</span><div class="col__heading">Scientists contribute</div><p class="col__text">Independent researchers list proprietary datasets they own and choose to share early.</p></div>
+      <div class="col"><span class="col__num">02</span><div class="col__heading">We validate</div><p class="col__text">Every dataset passes a provenance and quality check before anyone can license it.</p></div>
+      <div class="col"><span class="col__num">03</span><div class="col__heading">Organizations license</div><p class="col__text">Buyers get early, often exclusive access — and contributing scientists share in the revenue.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="dataset">
+  <div class="container">
+    <hr class="divider" style="margin-bottom:3.5rem">
+    <div class="about__grid">
+      <div>
+        <span class="label-upper">Our first dataset</span>
+        <h2 class="section-heading">A decade of<br>deep-reef data</h2>
+        <p class="about__bio">Atolla launches with roughly ten years of deep-reef biodiversity monitoring across the Indo-Pacific — collected by Dr Sonia J Rowley, one of fewer than 200 people in the world who can dive that depth. It's the kind of data that can't be recreated. And it's the first of many.</p>
+        <div class="about__awards">
+          <div class="about__award">The first of many — more datasets onboarding now</div>
+          <div class="about__award">Independently funded, owned, and fully licensable</div>
+        </div>
+        <div class="about__stats">
+          <div class="about-stat"><span class="about-stat__number">~10-yr</span><span class="about-stat__label">Time series</span></div>
+          <div class="about-stat"><span class="about-stat__number">30–200m</span><span class="about-stat__label">Deep-reef depths</span></div>
+          <div class="about-stat"><span class="about-stat__number">&lt;200</span><span class="about-stat__label">Can dive it</span></div>
+          <div class="about-stat"><span class="about-stat__number">Indo-Pacific</span><span class="about-stat__label">Region</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="creds">
+          <li><span class="dot"></span>Collected by Dr Sonia J Rowley</li>
+          <li><span class="dot"></span>~10 years of continuous monitoring</li>
+          <li><span class="dot"></span>Mesophotic depths few researchers can reach</li>
+          <li><span class="dot"></span>Indo-Pacific deep-reef systems</li>
+          <li><span class="dot"></span>Independently funded — clear to license</li>
+          <li><span class="dot"></span>Validated for provenance &amp; quality</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--grey" id="trust">
+  <div class="container">
+    <div class="trust">
+      <span class="label-upper">Built on trust</span>
+      <h2 class="section-heading section-heading--sm">Every dataset is checked<br>before it's licensed</h2>
+      <p class="about__bio">We verify where each dataset came from and that it holds up — so buyers can rely on it and scientists are recognized for quality work. We're building the layer of trust that early-stage research data has never had.</p>
+    </div>
+  </div>
+</section>
+<section id="connect">
+  <div class="split">
+    <div class="split__pane split__pane--light" id="scientists">
+      <span class="label-upper">For scientists</span>
+      <div class="pane__heading">I have data</div>
+      <p class="pane__sub pane__sub--light">Own proprietary research data and want it to reach — and reward — you sooner? Tell us about it and we'll be in touch.</p>
+      <!-- Replace REPLACE_SCIENTIST_ID with your Formspree endpoint. See README. -->
+      <form class="lead" action="https://formspree.io/f/REPLACE_SCIENTIST_ID" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <textarea name="about_data" placeholder="What kind of data do you have? (field, region, how it was funded)"></textarea>
+        <button type="submit" class="submit">Let's talk</button>
+      </form>
+      <p class="fineprint fineprint--light">We'll reach out personally. Nothing here is a binding offer.</p>
+    </div>
+    <div class="split__pane split__pane--dark" id="buyers">
+      <span class="label-upper label-upper--white">For buyers</span>
+      <div class="pane__heading">I need data</div>
+      <p class="pane__sub pane__sub--white">Need credible research data before your competitors or your reporting deadline? Request early access and we'll show you what's available.</p>
+      <!-- Replace REPLACE_BUYER_ID with your Formspree endpoint. See README. -->
+      <form class="lead" action="https://formspree.io/f/REPLACE_BUYER_ID" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Work email address" required>
+        <input type="text" name="organization" placeholder="Organization">
+        <button type="submit" class="submit">Request early access</button>
+      </form>
+      <p class="fineprint fineprint--white">We'll follow up to understand what you need.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer__inner">
+    <div>
+      <div class="footer__logo">Atolla</div>
+      <p class="footer__disc">Atolla is an early-stage company. This site is informational and is not an offer of securities or a binding agreement.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="footer__links">
+        <a href="#how">How it works</a>
+        <a href="#dataset">Our first dataset</a>
+        <a href="#scientists">For scientists</a>
+        <a href="#buyers">For buyers</a>
+      </div>
+      <p class="footer__disc" style="margin-top:1.2rem"><a href="mailto:hello@atolla.bio" style="color:rgba(255,255,255,.6)">hello@atolla.bio</a> &nbsp;·&nbsp; © 2026 Atolla</p>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav=document.getElementById('mainNav');
+  function updateNav(){nav.classList.toggle('scrolled',window.scrollY>60);}
+  window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  hamburger.addEventListener('click',()=>{const open=mobileMenu.classList.toggle('open');hamburger.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});
+  mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{mobileMenu.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');}));
+</script>
+</body>
+</html>
