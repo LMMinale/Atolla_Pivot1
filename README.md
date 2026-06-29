@@ -4,30 +4,35 @@ A single-file static landing page (`index.html`). No build step, no dependencies
 
 The page's only job: make a clear first impression and capture two kinds of interested people — scientists who might contribute data, and organizations that might license it. It is intentionally minimal and jargon-free.
 
+**Repository:** https://github.com/LMMinale/Atolla_Pivot1
+
 ---
 
-## 1. Keep the old site, start a new repo
+## 1. Connect this folder to GitHub and push
 
-Don't touch the existing Atolla repo — leave it live. Create a **new** repo for this rebuild:
+Run these on your computer, from inside this `atolla_pivot` folder.
+
+> If a stray `.git` folder is already here (an artifact of the cloud sync), delete it first so you start clean.
+> Windows PowerShell: `Remove-Item -Recurse -Force .git`
 
 ```bash
-# from inside this atolla-site folder
-git init
+git init -b main
 git add .
 git commit -m "Atolla landing page v1"
-git branch -M main
-git remote add origin https://github.com/<your-org>/atolla-site.git
+git remote add origin https://github.com/LMMinale/Atolla_Pivot1.git
 git push -u origin main
 ```
 
-The old site stays untouched and online until you decide to switch the domain — so there's no downtime risk.
+After this first push, you never touch git again — just double-click **`deploy.bat`** to ship future changes.
+
+> If `git push` says the remote already has commits (e.g. you created the repo with a README), run `git pull origin main --allow-unrelated-histories` once, then push again.
 
 ## 2. Deploy on Vercel
 
 1. Go to vercel.com → **Add New… → Project**.
-2. Import the new `atolla-site` repo.
+2. Import the **Atolla_Pivot1** repo.
 3. Framework Preset: **Other** (it's plain HTML — no build command, output dir is the repo root).
-4. **Deploy.** You'll get a live `https://atolla-site-xxxx.vercel.app` URL in under a minute.
+4. **Deploy.** You'll get a live `https://atolla-pivot1-xxxx.vercel.app` URL in under a minute.
 5. When you're ready, add your custom domain (`atolla.bio`) under **Project → Settings → Domains**. The old site keeps serving the domain until you point DNS at Vercel, so flip it only when you're happy.
 
 Every push to `main` redeploys automatically.
@@ -47,7 +52,9 @@ Alternatives that work the same way: Tally, Getform, or a Vercel serverless func
 
 ## 4. Editing content
 
-Everything lives in `index.html`. Copy is in plain HTML — search for the section you want (`id="problem"`, `id="how"`, `id="proof"`, etc.) and edit the text directly. Colors are CSS variables at the top of the `<style>` block (ocean palette, matched to the pitch deck).
+Everything lives in `index.html`. Copy is in plain HTML — search for the section you want (`id="problem"`, `id="how"`, `id="dataset"`, `id="scientists"`, `id="buyers"`) and edit the text directly. The visual style (fonts, the teal `#0e7c7b` accent, borders) is in the `<style>` block at the top, matched to the original Atolla site.
+
+To add a real hero photo, drop an image at `images/hero.jpg` and add `url('images/hero.jpg')` to the `background` line in the `.hero` rule.
 
 To preview locally, just open `index.html` in a browser, or run:
 
@@ -76,7 +83,9 @@ Two guardrails baked into the copy, keep them:
 ## Files
 
 ```
-atolla-site/
-├── index.html   # the entire site
-└── README.md    # this file
+atolla_pivot/
+├── index.html    # the entire site
+├── deploy.bat    # double-click to commit + push (auto-deploys via Vercel)
+├── .gitignore
+└── README.md     # this file
 ```
