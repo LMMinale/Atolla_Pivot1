@@ -14,7 +14,8 @@
     posthog.init('phc_zFDgwjcPoprWwfmxCYK2VLK3DGfM4b8taVTzrGWV9C7r', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2026-01-30',
-        person_profiles: 'identified_only'
+        person_profiles: 'identified_only',
+        respect_dnt: true
     })
 </script>
 <style>
@@ -114,7 +115,7 @@
   <div class="intro">
     <p>This Privacy Policy explains how <strong>Atolla</strong>, operated by SJR LLC ("Atolla", "we", "us", or "our"), collects, uses, and protects information when you visit <strong>atolla.bio</strong> or get in touch with us.</p>
     <p>We collect the minimum data necessary to operate this site and respond to you. We do not sell your data and we do not share it with advertisers. This policy is written in plain English — if anything is unclear, <a href="#contact">contact us</a>.</p>
-    <p><strong>Our baseline:</strong> if you only browse this website and do not submit a form, we do not collect any personally identifiable information about you.</p>
+    <p><strong>Our baseline:</strong> if you only browse this website and do not submit a form, we do not collect information that directly identifies you (such as your name or email). We do use privacy-conscious product analytics that collect limited technical and usage data — see Sections 2 and 7.</p>
   </div>
 
   <nav class="toc">
@@ -171,7 +172,8 @@
     <h3>Technical data (automatic)</h3>
     <p>Like most websites, our hosting infrastructure may automatically log basic technical data when you visit, including your approximate IP address, browser type, and the pages you view. This data is used solely for server security and uptime monitoring. It is not linked to any personal profile.</p>
 
-    <p><strong>Coming soon:</strong> we plan to add website analytics to understand how visitors use the site, and may introduce functional cookies. When we do, this policy will be updated and you will be given the opportunity to consent. Until then, we do not use analytics or tracking cookies.</p>
+    <h3>Analytics data (automatic)</h3>
+    <p>We use <strong>PostHog</strong>, a product-analytics service, to understand how visitors use the site. PostHog collects usage data such as the pages you view, links and buttons you click, how far you scroll, your browser and device type, and an approximate location derived from your IP address. It sets a first-party cookie so we can recognise returning visits. We have configured PostHog so that it does not build an identified personal profile for anonymous visitors, and we do not use this data for advertising. See Section 7 for cookie details.</p>
 
     <div class="tablewrap">
       <table>
@@ -181,6 +183,7 @@
           <tr><td>Name, work email, organization</td><td>"I need data" form</td><td>Yes (to respond to you)</td></tr>
           <tr><td>Name, email, message</td><td>Direct email to us</td><td>You choose what to send</td></tr>
           <tr><td>IP address, browser type</td><td>Automatically on each visit</td><td>Automatic (server logs)</td></tr>
+          <tr><td>Usage data, device/browser, approximate location (from IP)</td><td>Automatically via PostHog analytics</td><td>Automatic (analytics)</td></tr>
         </tbody>
       </table>
     </div>
@@ -210,7 +213,7 @@
     <span class="legal__num">04</span>
     <h2 id="storage">Storage &amp; Security</h2>
     <p>Your data is stored on secure servers. We take reasonable technical and organisational measures to protect it against unauthorised access, loss, or disclosure.</p>
-    <p>Form submissions are processed by our form provider and delivered to our operational email inbox, where they are stored. We do not share this data with third parties beyond what is described in Section 5 below.</p>
+    <p>Form submissions are processed by our form provider (Sheet Monkey) and stored as rows in a private Google Sheet (Google Workspace), accessible only to the Atolla team. Analytics data is stored by PostHog. We do not share this data with third parties beyond what is described in Section 5 below.</p>
     <p>No method of transmission over the internet is 100% secure. While we do our best to protect your data, we cannot guarantee absolute security.</p>
   </section>
 
@@ -219,7 +222,7 @@
     <h2 id="sharing">Sharing Your Data</h2>
     <p>We do not sell, rent, or trade your personal data. We share it only in the following limited circumstances:</p>
     <ul>
-      <li><strong>Service providers:</strong> we use third-party tools to operate the site and process form submissions (for example, our website host and our form-handling provider). These providers are contractually restricted from using your data for any purpose other than providing their service to us.</li>
+      <li><strong>Service providers:</strong> we use third-party tools to operate the site and process your data — our website host (Vercel), our form-handling provider (Sheet Monkey) and the private Google Sheet your enquiry is stored in (Google), and our product-analytics provider (PostHog). These providers process your data only to provide their service to us.</li>
       <li><strong>Legal requirements:</strong> we may disclose your data if required to do so by law, court order, or to protect the rights and safety of Atolla, its team, or the public.</li>
       <li><strong>Business transfer:</strong> if Atolla or SJR LLC is transferred or restructured, your data may be transferred as part of that transaction. You will be notified in advance if this occurs.</li>
     </ul>
@@ -247,8 +250,8 @@
     <h2 id="cookies">Cookies</h2>
     <p>A cookie is a small text file stored on your device when you visit a website.</p>
     <h3>What we currently use</h3>
-    <p>At present, atolla.bio uses only the basic session cookies necessary for the site to function. These cookies do not track you across other sites. We do not currently use analytics cookies, advertising cookies, or any third-party tracking cookies.</p>
-    <p><strong>Planned update:</strong> we intend to add website analytics in the near future. When we do, we will implement a cookie consent banner and update this section to describe exactly what is being set and why. You will always be able to opt out.</p>
+    <p>atolla.bio uses two kinds of cookies: the basic session cookies necessary for the site to function, and a first-party analytics cookie set by PostHog (see Section 2) that lets us recognise returning visits and measure how the site is used. We do not use advertising cookies and we do not sell cookie data, and PostHog does not track you across other websites.</p>
+    <p>You can opt out of analytics at any time by enabling your browser's "Do Not Track" setting or by blocking cookies for this site (see below). Blocking the analytics cookie does not affect your ability to use the site or submit a form.</p>
     <h3>How to control cookies</h3>
     <p>You can set your browser to refuse all or some cookies, or to alert you when websites set or access cookies. If you disable certain cookies, some parts of this site may not function properly. For more information, visit <a href="https://www.allaboutcookies.org" rel="noopener" target="_blank">allaboutcookies.org</a>.</p>
   </section>

@@ -12,7 +12,8 @@
     posthog.init('phc_zFDgwjcPoprWwfmxCYK2VLK3DGfM4b8taVTzrGWV9C7r', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2026-01-30',
-        person_profiles: 'identified_only'
+        person_profiles: 'identified_only',
+        respect_dnt: true
     })
 </script>
 <style>
@@ -243,8 +244,10 @@
       <span class="label-upper">For scientists</span>
       <div class="pane__heading">I have data</div>
       <p class="pane__sub pane__sub--light">Own proprietary research data and want it to reach — and reward — you sooner? Tell us about it and we'll be in touch.</p>
-      <!-- Replace REPLACE_SCIENTIST_ID with your Formspree endpoint. See README. -->
-      <form id="form-scientist" class="lead" action="https://formspree.io/f/REPLACE_SCIENTIST_ID" method="POST">
+      <!-- Sheet Monkey: replace REPLACE_WITH_SCIENTIST_FORM_ID with your real endpoint ID from sheetmonkey.io -->
+      <form id="form-scientist" class="lead" action="https://api.sheetmonkey.io/form/wtTBAVQPeDNVVPHWvahiQr" method="POST">
+        <input type="hidden" name="Timestamp" value="x-sheetmonkey-current-date-time">
+        <input type="hidden" name="audience" value="scientist">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Email address" required>
         <textarea name="about_data" placeholder="What kind of data do you have? (field, region, how it was funded)"></textarea>
@@ -256,8 +259,10 @@
       <span class="label-upper label-upper--white">For buyers</span>
       <div class="pane__heading">I need data</div>
       <p class="pane__sub pane__sub--white">Need credible research data before your competitors or your reporting deadline? Request early access and we'll show you what's available.</p>
-      <!-- Replace REPLACE_BUYER_ID with your Formspree endpoint. See README. -->
-      <form id="form-buyer" class="lead" action="https://formspree.io/f/REPLACE_BUYER_ID" method="POST">
+      <!-- Sheet Monkey: replace REPLACE_WITH_BUYER_FORM_ID with your real endpoint ID from sheetmonkey.io -->
+      <form id="form-buyer" class="lead" action="https://api.sheetmonkey.io/form/wtTBAVQPeDNVVPHWvahiQr" method="POST">
+        <input type="hidden" name="Timestamp" value="x-sheetmonkey-current-date-time">
+        <input type="hidden" name="audience" value="buyer">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Work email address" required>
         <input type="text" name="organization" placeholder="Organization">
@@ -294,15 +299,27 @@
   hamburger.addEventListener('click',()=>{const open=mobileMenu.classList.toggle('open');hamburger.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',open);});
   mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{mobileMenu.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');}));
 
-  // PostHog: track lead-form submissions
-  function trackLead(formId, audience){
+  // Lead forms: submit to Sheet Monkey via AJAX, fire PostHog event, show inline thanks
+  function setupLeadForm(formId, audience){
     var f=document.getElementById(formId);
-    if(f)f.addEventListener('submit',function(){
-      if(window.posthog)posthog.capture('lead_form_submitted',{audience:audience,form_id:formId});
+    if(!f) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(window.posthog) posthog.capture('lead_form_submitted',{audience:audience, form_id:formId});
+      var btn=f.querySelector('.submit'); var orig=btn?btn.textContent:'';
+      if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+      fetch(f.action, { method:'POST', body:new FormData(f), headers:{'Accept':'application/json'} })
+        .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status);
+          f.innerHTML='<p style="font-family:\'Barlow\',sans-serif;font-size:1rem;line-height:1.6;padding:.5rem 0">Thanks — we’ve got your details and will be in touch.</p>';
+        })
+        .catch(function(){
+          if(btn){ btn.disabled=false; btn.textContent=orig; }
+          alert('Sorry, something went wrong sending your message. Please email hello@atolla.bio.');
+        });
     });
   }
-  trackLead('form-scientist','scientist');
-  trackLead('form-buyer','buyer');
+  setupLeadForm('form-scientist','scientist');
+  setupLeadForm('form-buyer','buyer');
 
   // ---- PostHog custom event tracking: buttons, outbound links, scroll depth ----
   (function(){

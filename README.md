@@ -39,16 +39,25 @@ Every push to `main` redeploys automatically.
 
 ## 3. Wire up the two forms (required before launch)
 
-The page is static, so the forms need a third-party endpoint to receive submissions. Easiest option: **[Formspree](https://formspree.io)** (free tier is fine).
+The page is static, so the forms need a third-party endpoint to receive submissions. We use **[Sheet Monkey](https://sheetmonkey.io)** (free up to ~100 submissions/month), which writes submissions straight into a Google Sheet.
 
-1. Create two Formspree forms — one for scientists, one for buyers.
-2. In `index.html`, replace the two placeholders:
-   - `https://formspree.io/f/REPLACE_SCIENTIST_ID`
-   - `https://formspree.io/f/REPLACE_BUYER_ID`
-   with your real endpoint URLs.
-3. Submissions then land in your inbox / Formspree dashboard.
+1. Sign in to Sheet Monkey with Google and create (or connect) a Google Sheet.
+2. In **row 1** of the sheet, add these column headers exactly (case-sensitive) so both forms can share one sheet:
+   `Timestamp` · `audience` · `name` · `email` · `about_data` · `organization`
+3. In Sheet Monkey, create a **form** pointed at that sheet. It gives you an endpoint like `https://api.sheetmonkey.io/form/AbC123`.
+4. In `index.html`, replace the two placeholders with that endpoint ID:
+   - `https://api.sheetmonkey.io/form/REPLACE_WITH_SCIENTIST_FORM_ID`
+   - `https://api.sheetmonkey.io/form/REPLACE_WITH_BUYER_FORM_ID`
+   Use the **same** ID for both to collect everything in one sheet (filter by the `audience` column), or make two Sheet Monkey forms for two separate sheets.
+5. Submissions then append to your Google Sheet as new rows. The endpoint is write-only, so it's safe to leave in the public HTML.
 
-Alternatives that work the same way: Tally, Getform, or a Vercel serverless function if you'd rather keep it in-house later.
+The forms submit via `fetch` (AJAX): visitors stay on the page and see an inline "Thanks" message instead of being redirected. The hidden `Timestamp` field auto-fills the submission time (Sheet Monkey magic value), and a hidden `audience` field tags each row `scientist` or `buyer`.
+
+Alternatives that work the same way: Form2Sheet, Getform, Tally, or a Vercel serverless function if you'd rather keep it in-house later.
+
+## 3a. Analytics (PostHog)
+
+The site sends product analytics to **[PostHog](https://posthog.com)** (US Cloud). The snippet sits in the `<head>` of `index.html` and `privacy.html` with the public project key (`phc_…`), which is write-only and safe to expose. On top of automatic pageviews/clicks, the site fires named custom events: `button_clicked` (with button text), `outbound_link_clicked`, `scroll_depth_reached` (25/50/75/100%), and `lead_form_submitted` (with `audience`). The project's authorized URL is set to `https://atolla.bio` in PostHog settings.
 
 ## 4. Editing content
 
@@ -84,8 +93,11 @@ Two guardrails baked into the copy, keep them:
 
 ```
 atolla_pivot/
-├── index.html    # the entire site
+├── index.html    # the main landing page (forms + analytics live here)
+├── privacy.html  # privacy policy page
+├── images/       # hero / background images
 ├── deploy.bat    # double-click to commit + push (auto-deploys via Vercel)
+├── vercel.json   # Vercel config (clean URLs)
 ├── .gitignore
 └── README.md     # this file
 ```
